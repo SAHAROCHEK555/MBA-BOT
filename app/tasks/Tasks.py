@@ -40,15 +40,14 @@ class Tasks:
             f.seek(0)
             json.dump(struct, f, indent=4)
         return
-    
+        
     @staticmethod
     def create_user(user_id):        
         with open('app/tasks/pattern.json', 'r', encoding='utf-8') as f:
             task_struct = json.load(f)
-        standart_struct_for_user = {user_id: task_struct}
         with open('app/tasks/data-base.json', 'r+', encoding='utf-8') as f:
             struct = json.load(f)
-            struct = standart_struct_for_user
+            struct[user_id] = task_struct
             f.seek(0)
             json.dump(struct, f, indent=4)
         return

@@ -33,7 +33,7 @@ async def send_notifications(bot):
 @router.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(f"Привет!\nЯ был создан для бизнеса.", reply_markup=kb.main)
-
+    Tasks.create_user(str(message.from_user.id))
 
 # learning
 @router.message(user_mes_text == "📖обучение📖")
